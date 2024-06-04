@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const profiles = require('./Profile');
 
 const databaseSchema = new Schema({
     name: {
@@ -21,7 +20,6 @@ const databaseSchema = new Schema({
         }
     ]
 })
-profiles: [Profile.schema]
 
 const Database = mongoose.model('Database', databaseSchema);
 
