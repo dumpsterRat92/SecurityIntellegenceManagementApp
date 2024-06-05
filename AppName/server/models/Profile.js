@@ -24,6 +24,11 @@ const profileSchema = new Schema({
         trim: true,
         default: 'unknown',
     },
+    gender: {
+        type: String,
+        trim: true,
+        default: 'unknown',
+    },
     hairColor: {
         type: String,
         trim: true,
