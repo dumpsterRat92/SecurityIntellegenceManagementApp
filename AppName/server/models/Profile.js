@@ -44,7 +44,7 @@ const profileSchema = new Schema({
         required: true,
         trim: true,
     },
-    indentifiers: [{
+    identifiers: [{
         type: String,
         trim: true,
         required: true,
