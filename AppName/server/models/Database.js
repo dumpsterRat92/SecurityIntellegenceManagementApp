@@ -13,6 +13,10 @@ const databaseSchema = new Schema({
         required: true,
         trim: true
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     profiles: [
         {
             type: Schema.Types.ObjectId,
