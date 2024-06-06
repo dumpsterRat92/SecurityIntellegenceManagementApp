@@ -3,8 +3,6 @@
 const typeDefs = `
 type User {
     id: ID!
-    firstName: String!
-    lastName: String!
     email: String!
     password: String!
     username: String!
@@ -27,6 +25,7 @@ type Profile {
 type Database {
     name: String!
     description: String!
+    userId: String!
     profiles: [Profile]
 }
 
@@ -42,5 +41,6 @@ type Mutation {
     createDatabase(name: String!, description: String!): Database
     updateUser(id: ID!, firstName: String!, lastName: String!, email: String!, password: String!, username: String!): User
     updateProfile(id: ID!, firstName: String!, lastName: String!, age: Number!, race: String!, gender: String!, hairColor: String!, eyeColor: String!, height: String!, hostilityIndex: Number!, indentifiers: [String]!, vioations: [String]!): Profile
+    removeProfile(id: ID!)
 }
 `
