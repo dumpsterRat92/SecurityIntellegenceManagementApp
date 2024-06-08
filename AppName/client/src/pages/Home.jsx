@@ -4,7 +4,7 @@ export default function About() {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '2rem',
-    backgroundColor: '#00f',
+    backgroundColor: '#212121',
     color: '#fff',
     textAlign: 'center',
     height: '100vh', // Full viewport height
