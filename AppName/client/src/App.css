@@ -27,7 +27,7 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
@@ -39,4 +39,45 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/* For mobile devices */
+/* For mobile devices */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-fluid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .side-panel {
+    width: 100%;
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
+
+/* For larger devices */
+@media (min-width: 769px) {
+  .main-content {
+    margin-left: 220px; /* Account for the side panel width */
+  }
+}
+

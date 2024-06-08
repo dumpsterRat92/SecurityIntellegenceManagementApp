@@ -51,6 +51,8 @@ export default function Nav({ links }) {
     margin: '0 1rem'
   };
 
+  
+
   const loginStyle = {
     display: 'flex',
     alignItems: 'center',
