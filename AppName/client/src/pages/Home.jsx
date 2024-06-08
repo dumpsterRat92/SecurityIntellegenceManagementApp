@@ -1,14 +1,17 @@
+import backgroundImage from '../assets/wp2234726-aesthetic-spongebob-wallpapers.png'
+
 export default function About() {
  const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    // alignItems: 'center',
     padding: '2rem',
-    backgroundColor: '#212121',
+    // backgroundColor: '#212121',
+    backgroundImage: `url(${backgroundImage})`,
     color: '#fff',
     textAlign: 'center',
-    height: '100vh', // Full viewport height
-    width: '100vh', // Full width
+    height: '1000vh', // Full viewport height
+    width: '100%', // Full width
     boxSizing: 'border-box'
   };
 
