@@ -7,7 +7,7 @@ export default function Database() {
 
   const sidePanelStyle = {
     width: '200px',
-    backgroundColor: '#fff',
+    backgroundColor: '#212121',
     padding: '7.2rem 1rem 1rem 1rem',
     display: 'flex',
     flexDirection: 'column',
@@ -32,7 +32,7 @@ export default function Database() {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around', 
-    backgroundColor: '#fff',
+    backgroundColor: '#212121',
     boxSizing: 'border-box',
   };
 

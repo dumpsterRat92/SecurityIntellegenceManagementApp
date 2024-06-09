@@ -20,7 +20,7 @@ export default function Account() {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '2rem',
-    backgroundColor: '#000',
+    backgroundColor: '#212121',
     color: '#fff',
     minHeight: '100vh',
     width: '100%',

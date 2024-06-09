@@ -17,7 +17,7 @@ export default function FAQ() {
     maxWidth: '1200px',
     margin: '2rem auto',
     padding: '2rem',
-    backgroundColor: '#79589f',
+    backgroundColor: '#212121',
     borderRadius: '8px',
     boxSizing: 'border-box',
     textAlign: 'left',
