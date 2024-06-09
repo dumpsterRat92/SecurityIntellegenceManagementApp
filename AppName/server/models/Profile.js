@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
+const Database = require('./Database');
 
 const { Schema } = mongoose;
 
 const profileSchema = new Schema({
+    // picture: {
+    //     type: String,
+    //     unique: true,
+    //     default: 'default-profile.png'
+    // },
     firstName: {
         type: String,
         required: true,
@@ -57,8 +63,14 @@ const profileSchema = new Schema({
     violations: [{
         type: String,
         trim: true,
+        allowNull: true,
         required: true,
     }],
+    databaseId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Database',
+        required: true
+    }
 
 
 }, {
@@ -69,7 +81,6 @@ const profileSchema = new Schema({
     // NICE
         virtuals: true,
     }, 
-    id: false
 }
 );
 profileSchema.virtual('violationCount').get(function(){

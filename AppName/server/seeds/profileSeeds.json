@@ -10,7 +10,7 @@
         "height": "Unknown",
         "hostilityIndex": 3,
         "identifiers": "Mustache disguise",
-        "violations": "Serial murder, Littering, Stalking"
+        "violations": ["Serial murder", "Littering", "Stalking"]
     },
     {
         "firstName": "Doodle",
@@ -22,8 +22,8 @@
         "eyeColor": "Black",
         "height": "Unknown",
         "hostilityIndex": 2,
-        "identifiers": "Pencil drawing",
-        "violations": "Vandalism, Harassment, Assault and battery, Terrorist"
+        "identifiers": ["Pencil drawing"],
+        "violations": ["Vandalism", "Harassment", "Assault and battery", "Terrorist"]
     },
     {
         "firstName": "Sheldon",
@@ -36,7 +36,7 @@
         "height": "2 inches",
         "hostilityIndex": 3,
         "identifiers": "Smol",
-        "violations": "Attempted world domination, Serial theft, Murder"
+        "violations": ["Attempted world domination", "Serial theft", "Murder"]
     },
     {
         "firstName": "Dennis",
@@ -48,8 +48,8 @@
         "eyeColor": "Black",
         "height": "Unknown",
         "hostilityIndex": 3,
-        "identifiers": "Black Sunglasses, Red Bandana, Motorcycle",
-        "violations": "Vicious Cold-Blooded Predator, Cowboy, Mass Murder, Stalking, Assault"
+        "identifiers": ["Black Sunglasses", "Red Bandana", "Motorcycle"],
+        "violations": ["Vicious Cold-Blooded Predator", "Cowboy", "Mass Murder", "Stalking", "Assault"]
     },
     {
         "firstName": "Bubble",
@@ -61,8 +61,8 @@
         "eyeColor": "Black",
         "height": "N/A",
         "hostilityIndex": 2,
-        "identifiers": "Glasses, Crushing Weight",
-        "violations": "Cheating, Fraud, Property Damage"
+        "identifiers": ["Glasses", "Crushing Weight"],
+        "violations": ["Cheating", "Fraud", "Property Damage"]
     },
     {
         "firstName": "Eugene",
@@ -74,8 +74,8 @@
         "eyeColor": "Green",
         "height": "N/A",
         "hostilityIndex": 1,
-        "identifiers": "Loves Money, Alias: Mr. Krabs",
-        "violations": "Scamming, Fraud, Blackmail"
+        "identifiers": ["Loves Money", "Alias: Mr. Krabs"],
+        "violations": ["Scamming", "Fraud", "Blackmail"]
     },
     {
         "firstName": "SpongeBob",
@@ -87,8 +87,8 @@
         "eyeColor": "Light Blue",
         "height": "4 Inches",
         "hostilityIndex": 1,
-        "identifiers": "Loud Yellow Sponge",
-        "violations": "Littering, Driving without a license"
+        "identifiers": ["Loud Yellow Sponge"],
+        "violations": ["Littering", "Driving without a license"]
     },
     {
         "firstName": "Patrick",
@@ -100,8 +100,8 @@
         "eyeColor": "Black",
         "height": "6 Inches",
         "hostilityIndex": 1,
-        "identifiers": "No shirt, Green and Purple shorts",
-        "violations": "Stealing a balloon"
+        "identifiers": ["No shirt", "Green and Purple shorts"],
+        "violations": ["Stealing a balloon"]
     },
     {
         "firstName": "Squidward",
@@ -113,8 +113,8 @@
         "eyeColor": "Yellow with red pupils",
         "height": "N/A",
         "hostilityIndex": 1,
-        "identifiers": "Orange-Yellow Shirt, No pants",
-        "violations": "Property Damage"
+        "identifiers": ["Orange-Yellow Shirt", "No pants"],
+        "violations": ["Property Damage"]
     },
     {
         "firstName": "Mrs. Penelope",
@@ -126,7 +126,7 @@
         "eyeColor": "Black",
         "height": "N/A",
         "hostilityIndex": 1,
-        "identifiers": "Blue-Red Dress, Big fins",
-        "violations": "Property Damage, Neglect"
+        "identifiers": ["Blue-Red Dress", "Big fins"],
+        "violations": ["Property Damage", "Neglect"]
     }
 ]

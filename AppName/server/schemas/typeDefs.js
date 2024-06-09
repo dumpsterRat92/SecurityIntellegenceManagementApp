@@ -1,4 +1,4 @@
-// get profiles by indentifer, firstname/lastname, and vioations//
+// get profiles by indentifer, firstname/lastname, and violations//
 
 
 
@@ -22,13 +22,14 @@ type Profile {
     height: String
     hostilityIndex: Int!
     identifiers: [String]!
-    vioations: [String]!
+    violations: [String]!
+    databaseId: ID!
 }
 type Database {
     id:ID!
     name: String!
     description: String!
-    userId: String
+    userId: String!
     profiles: [Profile]
 }
 
@@ -43,51 +44,72 @@ type Query {
     user(id: ID!): User
     userByUsername(username: String!): User
     profile(id: ID!): Profile
-    database: [Database]
-}
+    databases: [Database]
+    database(id: ID!): [Database]
+    }
 
 type Mutation {
-    login
-    (
-    username: String!,
-     password: String!): Auth
+    login(
+        username: String!,
+        password: String!
+    ): Auth
 
-    createUser(email: String!,
-     password: String!,
-      username: String!): User
+    createUser(
+        email: String!,
+        password: String!,
+        username: String!
+    ): User
 
-    createProfile(firstName: String!,
-     lastName: String,
-      age: Int,
-       race: String,
-        gender: String,
-         hairColor: String,
-          eyeColor: String,
-           height: String,
-            hostilityIndex: Int!,
-             identifiers: [String]!,
-              vioations: [String]!): Profile
-
-    createDatabase(name: String!,
-     description: String!, 
-     userId: String!): Database
-
-    updateUser(id: ID!, email: String, password: String, username: String): User
-
-    updateProfile(id: ID!,
-     firstName: String,
-      lastName: String,
-       age: Int,
+    createProfile(
+        firstName: String!,
+        lastName: String,
+        age: Int,
         race: String,
-         gender: String,
-          hairColor: String, 
-          eyeColor: String, 
-          height: String,
-           hostilityIndex: Int,
-            identifiers: [String], 
-            vioations: [String]): Profile
+        gender: String,
+        hairColor: String,
+        eyeColor: String,
+        height: String,
+        hostilityIndex: Int!,
+        identifiers: [String]!,
+        violations: [String]!,
+        databaseId: ID!
+    ): Profile
 
-    updateDatabase(id: ID!, name: String, description: String, userId: ID): Database
+    createDatabase(
+        name: String!,
+        description: String!, 
+        userId: String!
+    ): Database
+
+    updateUser(
+        id: ID!, 
+        email: String, 
+        password: String, 
+        username: String
+    ): User
+
+    updateProfile(
+        id: ID!,
+        firstName: String,
+        lastName: String,
+        age: Int,
+        race: String,
+        gender: String,
+        hairColor: String, 
+        eyeColor: String, 
+        height: String,
+        hostilityIndex: Int,
+        identifiers: [String], 
+        violations: [String]
+    ): Profile
+
+    updateDatabase(
+        id: ID!, 
+        name: String, 
+        description: String, 
+        userId: ID, 
+        profiles: ID
+    ): Database
 
     deleteUser(id: ID!): User
 

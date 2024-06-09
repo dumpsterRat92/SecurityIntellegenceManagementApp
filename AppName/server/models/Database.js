@@ -15,12 +15,14 @@ const databaseSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     profiles: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Profile'
+            ref: 'Profile',
+            allowNull: true
         }
     ]
 })

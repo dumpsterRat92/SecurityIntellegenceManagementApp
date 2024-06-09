@@ -30,11 +30,17 @@ const resolvers = {
       // }
       return await Profile.findById(id);
     },
+    databases: async (parent, args, context) => {
+      // if (!context.user) {
+      //       throw new authenticationError('Not authenticated');
+      // }
+      return await Database.find({}).populate('profiles')
+    },
     database: async (parent, args, context) => {
       // if (!context.user) {
       //       throw new authenticationError('Not authenticated');
       // }
-      return await Database.find({})
+      return await Database.findById(args.id).populate('profiles')
     }
   },
   Mutation: {
@@ -69,9 +75,27 @@ const resolvers = {
       // if (!context.user || !context.database) {
       //   throw new authenticationError('Not authenticated');
       // }
-      const profile = await Profile.create(args);
+      const database = await Database.findById(args.databaseId);
+      if (!database){
+        throw new Error('Database not found')
+      }
+      const newProfile = {
+        firstName: args.firstName,
+        lastName: args.lastName,
+        age: args.age,
+        race: args.race,
+        gender: args.gender,
+        hairColor: args.hairColor,
+        eyeColor: args.eyeColor,
+        height: args.height,
+        hostilityIndex: args.hostilityIndex,
+        identifiers: args.identifiers,
+        violations: args.violations,
+        databaseId: database.id
+      }
+      const profile = await Profile.create(newProfile);
       await Database.findByIdAndUpdate(
-        args.databaseid,
+        database.id,
         { $push: { profiles: profile._id } },
         { new: true }
       );
@@ -81,7 +105,7 @@ const resolvers = {
       // if (!context.user) {
       //   throw new authenticationError('Not authenticated');
       // }
-      return await User.findByIdAndUpdate(context.user.id, args, { new: true });
+      return await User.findByIdAndUpdate(args.id, args, { new: true });
     },
     updateProfile: async (parent, args, context) => {
       // if (!context.user) {
@@ -96,21 +120,34 @@ const resolvers = {
       return await Database.findByIdAndUpdate(args.id, args, { new: true });
     },
     deleteUser: async (parent, { id }, context) => {
-      if (!context.user) {
-        throw new authenticationError('Not authenticated');
-      }
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
       return await User.findByIdAndDelete(id);
     },
-    deleteProfile: async (parent, { id }, context) => {
-      if (!context.user) {
-        throw new authenticationError('Not authenticated');
+    deleteProfile: async (parent, args, context) => {
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      const profile = await Profile.findById(args.id)
+      if(!profile) {
+        throw new Error('Profile not found')
       }
-      return await Profile.findByIdAndDelete(id);
+      const database = await Database.findById(profile.databaseId)
+      if (!database) {
+        throw new Error('Database not found')
+      }
+      await Database.findByIdAndUpdate(
+        database.id,
+        { $pull: { profiles: {_id: args.id} } },
+        { new: true }
+      )
+      return await Profile.findByIdAndDelete(args.id);
     },
     deleteDatabase: async (parent, { id }, context) => {
-      if (!context.user) {
-        throw new authenticationError('Not authenticated');
-      }
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
       return await Database.findByIdAndDelete(id);
     }
   }
