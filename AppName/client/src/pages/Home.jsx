@@ -5,14 +5,15 @@ export default function About() {
     display: 'flex',
     flexDirection: 'column',
     // alignItems: 'center',
-    padding: '2rem',
-    // backgroundColor: '#212121',
-    backgroundImage: `url(${backgroundImage})`,
+    padding: '7rem', 
+    backgroundColor: '#212121',
+    // backgroundImage: `url(${backgroundImage})`,
     color: '#fff',
     textAlign: 'center',
     height: '1000vh', // Full viewport height
     width: '100%', // Full width
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    margin: '0',
   };
 
   const sectionStyle = {
@@ -20,7 +21,8 @@ export default function About() {
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: '2rem 0'
+    margin: '2rem 0',
+    width: '100%',
   };
 
   const textContainerStyle = {
