@@ -1,64 +1,119 @@
-const {User, Database, Profile } = require('../models');
-
+const { User, Database, Profile } = require('../models');
 const { signToken, authenticationError } = require('../utils/auth');
 
-
-
 const resolvers = {
-    Query: {
-        users: async () => {
-            return await User.find({});
-        },
-        databases: async () => {
-            return await Database.find({});
-        },
-        profiles: async () => {
-            return await Profile.find({});
-        }
+  Query: {
+    users: async (parent, args, context) => {
+      return await User.find({});
     },
-    Mutation: {
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email, password });
-        },    
-        addUser: async (parent, { email, password, username }) => {
-            return await User.create({ email, password, username });
-        },
-        addDatabase: async (parent, { name, description, userId, profiles }) => {
-            return await Database.create({ name, description, userId, profiles });
-        },
-        addProfile: async (parent, { fistName, lastName, age, race, gender, hairColor, eyeColor, height, hostilityIndex, identifiers, violations}, context) => {
-            if (context.database) {
-                const profile = await Profile.create({ fistName, lastName, age, race, gender, hairColor, eyeColor, height, hostilityIndex, identifiers, violations })
-                
-                await Database.findByIdAndUpdate(context.database, { $push: { profiles: profile._id } });
-
-                return profile;
-            } 
-            throw authenticationError;
-
-        },
-        updateUser: async (parent, { userId, email, password, username }) => {
-            return await User.findByIdAndUpdate( {new: true});
-        },
-        updateProfile: async (parent, args) => {
-            return await Profile.findByIdAndUpdate(args.id, args, {new: true});
-        },
-        updateDatabase: async (parent, args) => {
-            return await Database.findByIdAndUpdate(args.id, args, {new: true});
-        },
-        deleteUser: async (parent, { userId }) => {
-            return await User.findByIdAndDelete({_id: userId});
-        },
-        deleteProfile: async (parent, { profileId }) => {
-            return await Profile.findByIdAndDelete({_id: profileId});
-        },
-        deleteDatabase: async (parent, { databaseId }) => {
-            return await Database.findByIdAndDelete({_id: databaseId});
-        }
-    
+    profiles: async (parent, args, context) => {
+        // if(context.user) {
+        //     throw new authenticationError('Not authenticated');
+        // }
+        return await Profile.find({});
+    },
+    user: async (parent, { id }, context) => {
+      // if (!context.user) {
+      //       throw new authenticationError('Not authenticated');
+      // }
+      return await User.findById(id);
+    },
+    userByUsername: async (parent, { username }, context) => {
+        // if (!context.user) {
+        //     throw new authenticationError('Not authenticated');
+        // }
+        return await User.findOne({ username });
+    },
+    profile: async (parent, { id }, context) => {
+      // if (!context.user) {
+      //       throw new authenticationError('Not authenticated');
+      // }
+      return await Profile.findById(id);
+    },
+    database: async (parent, args, context) => {
+      // if (!context.user) {
+      //       throw new authenticationError('Not authenticated');
+      // }
+      return await Database.find({})
     }
-}
+  },
+  Mutation: {
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
+      if (!user) {
+        throw new authenticationError('Invalid username or password');
+      }
 
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new authenticationError('Invalid username or password');
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+    createUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+      return { token, user };
+    },
+    createDatabase: async (parent, args, context) => {
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      return await Database.create( args );
+    },
+    createProfile: async (parent, args, context) => {
+      // if (!context.user || !context.database) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      const profile = await Profile.create(args);
+      await Database.findByIdAndUpdate(
+        args.databaseid,
+        { $push: { profiles: profile._id } },
+        { new: true }
+      );
+      return profile;
+    },
+    updateUser: async (parent, args, context) => {
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      return await User.findByIdAndUpdate(context.user.id, args, { new: true });
+    },
+    updateProfile: async (parent, args, context) => {
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      return await Profile.findByIdAndUpdate(args.id, args, { new: true });
+    },
+    updateDatabase: async (parent, args, context) => {
+      // if (!context.user) {
+      //   throw new authenticationError('Not authenticated');
+      // }
+      return await Database.findByIdAndUpdate(args.id, args, { new: true });
+    },
+    deleteUser: async (parent, { id }, context) => {
+      if (!context.user) {
+        throw new authenticationError('Not authenticated');
+      }
+      return await User.findByIdAndDelete(id);
+    },
+    deleteProfile: async (parent, { id }, context) => {
+      if (!context.user) {
+        throw new authenticationError('Not authenticated');
+      }
+      return await Profile.findByIdAndDelete(id);
+    },
+    deleteDatabase: async (parent, { id }, context) => {
+      if (!context.user) {
+        throw new authenticationError('Not authenticated');
+      }
+      return await Database.findByIdAndDelete(id);
+    }
+  }
+};
 
 module.exports = resolvers;
