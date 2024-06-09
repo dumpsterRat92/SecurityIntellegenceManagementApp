@@ -66,12 +66,12 @@ const profileSchema = new Schema({
         virtuals: true,
     },
     toObject: {
+    // NICE
         virtuals: true,
     }, 
     id: false
 }
 );
-// NICE
 profileSchema.virtual('violationCount').get(function(){
     return this.violations.length;
 });
