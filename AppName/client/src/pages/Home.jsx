@@ -1,3 +1,5 @@
+import backgroundImage from '../assets/wp2234726-aesthetic-spongebob-wallpapers.png';
+
 export default function About() {
   const containerStyle = {
     display: "flex",
@@ -5,7 +7,7 @@ export default function About() {
     // alignItems: 'center',
     padding: "7rem",
     backgroundColor: "#212121",
-    // backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${backgroundImage})`,
     color: "#fff",
     textAlign: "center",
     height: "1000vh", // Full viewport height
