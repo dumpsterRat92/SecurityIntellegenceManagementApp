@@ -34,14 +34,14 @@ type Database {
 }
 
 type Auth {
-    token: ID
+    token: ID!
     user: User
 }
 
 type Query {
     users: [User]
     profiles: [Profile]
-    user(id: ID!): User
+    user(email: String!): User
     userByUsername(username: String!): User
     profile(id: ID!): Profile
     databases: [Database]
@@ -50,7 +50,7 @@ type Query {
 
 type Mutation {
     login(
-        username: String!,
+        email: String!,
         password: String!
     ): Auth
 
@@ -58,7 +58,7 @@ type Mutation {
         email: String!,
         password: String!,
         username: String!
-    ): User
+    ): Auth
 
     createProfile(
         firstName: String!,

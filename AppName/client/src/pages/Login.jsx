@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN, CREATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -11,8 +10,9 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [login, { err, data2 }] = useMutation(LOGIN);
-  const [signup, { error, data }] = useMutation(CREATE_USER);
+  const [login, { error: loginError, data: loginData }] = useMutation(LOGIN);
+  const [signup, { error: signupError, data: signupData }] =
+    useMutation(CREATE_USER);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,18 +24,20 @@ export default function Login() {
       e.preventDefault();
       console.log(formData);
       try {
-        const { data2 } = await login({
+        console.log(formData);
+        const { data } = await login({
           variables: {
-            username: formData.username,
+            email: formData.email,
             password: formData.password,
           },
         });
-        console.log(data2);
-        Auth.login(data2.login.token);
+        console.log(data);
+        Auth.login(data.login.token);
       } catch (e) {
         console.error(e);
       }
     } else {
+      e.preventDefault();
       try {
         const { data } = await signup({
           variables: { ...formData },
@@ -111,20 +113,20 @@ export default function Login() {
         <h2>{isLogin ? "Login" : "Sign Up"}</h2>
         {!isLogin && (
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
             onChange={handleInputChange}
             style={inputStyle}
             required
           />
         )}
         <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleInputChange}
           style={inputStyle}
           required
