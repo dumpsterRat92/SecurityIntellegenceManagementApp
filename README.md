@@ -1,10 +1,10 @@
-# SIMA: GuardWatch
+# SIMA: SentryWatch
 
- SIMA: GuardWatch is a collaborative MERN stack single-page application designed for security professionals to manage and report suspicious individuals. This project demonstrates our problem-solving skills and ability to work with real-world data to solve a real-world challenge, focusing on data and user demand.
+ SIMA: SentryWatch is a collaborative MERN stack single-page application designed for security professionals to manage and report suspicious individuals. This project demonstrates our problem-solving skills and ability to work with real-world data to solve a real-world challenge, focusing on data and user demand.
 
 ## Description
 
-SecurityGuardDB allows users to:
+ SIMA: SentryWatch allows users to:
 - Add, edit, and delete profiles of suspicious individuals
 - View a database of profiles
 - Sort and filter profiles
