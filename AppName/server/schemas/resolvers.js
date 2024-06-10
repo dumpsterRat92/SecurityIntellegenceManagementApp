@@ -45,6 +45,13 @@ const resolvers = {
       //       throw new authenticationError('Not authenticated');
       // }
       return await Database.findById(args.id).populate('profiles')
+    },
+    databaseByUser: async (parent, {userId}, context) => {
+      const databussy = await Database.findOne({ userId }).populate('profiles')
+      if(!databussy) {
+        return {message: "databussy not found"}
+      }
+      return databussy
     }
   },
   Mutation: {

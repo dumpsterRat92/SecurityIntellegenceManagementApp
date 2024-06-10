@@ -22,6 +22,30 @@ export const QUERY_USERS = gql`
     }
 `;
 
+export const QUERY_DATABASEBYUSER = gql`
+query databaseByUser($userId: String!){
+  databaseByUser(userId: $userId) {
+    description
+    id
+    name
+    profiles {
+      id
+      firstName
+      lastName
+      age
+      race
+      gender
+      hairColor
+      eyeColor
+      height
+      hostilityIndex
+      identifiers
+      violations
+      databaseId
+    }
+  }
+}
+`;
 export const QUERY_DATABASE = gql`
 query database($databaseId: ID!) {
   database(id: $databaseId) {
