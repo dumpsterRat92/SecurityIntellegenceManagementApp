@@ -4,11 +4,6 @@ const Database = require('./Database');
 const { Schema } = mongoose;
 
 const profileSchema = new Schema({
-    // picture: {
-    //     type: String,
-    //     unique: true,
-    //     default: 'default-profile.png'
-    // },
     firstName: {
         type: String,
         required: true,

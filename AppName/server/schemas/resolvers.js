@@ -12,11 +12,15 @@ const resolvers = {
         // }
         return await Profile.find({});
     },
-    user: async (parent, { id }, context) => {
+    user: async (parent, { email }, context) => {
       // if (!context.user) {
       //       throw new authenticationError('Not authenticated');
       // }
-      return await User.findById(id);
+      const user = await User.findOne({ email })
+      if (!user) {
+        return {message: "user not found"}
+      }
+      return user;
     },
     userByUsername: async (parent, { username }, context) => {
         // if (!context.user) {
@@ -44,21 +48,21 @@ const resolvers = {
     }
   },
   Mutation: {
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
-        throw new authenticationError('Invalid username or password');
+        return 'Invalid username or password';
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new authenticationError('Invalid username or password');
+        return 'Invalid username or password';;
       }
 
       const token = signToken(user);
-      return { token, user };
+      return {token, user};
     },
     createUser: async (parent, args) => {
       const user = await User.create(args);
