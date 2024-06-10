@@ -6,7 +6,9 @@
   "scripts": {
     "test": "test",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "build": "cd .. && npm run render-build",
+    "render-build": "npm install && npm run build"
   },
   "keywords": [
     "bingus"
