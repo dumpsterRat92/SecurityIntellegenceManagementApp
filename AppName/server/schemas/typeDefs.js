@@ -45,7 +45,7 @@ type Query {
     userByUsername(username: String!): User
     profile(id: ID!): Profile
     databases: [Database]
-    database(id: ID!): [Database]
+    database(id: ID!): Database
     }
 
 type Mutation {
