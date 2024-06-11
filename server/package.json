@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "server side",
   "main": "server.js",
+  "engine": {
+    "node": "20.11.1"
+  },
   "scripts": {
     "test": "test",
     "start": "node server.js",
