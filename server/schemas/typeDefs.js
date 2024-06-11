@@ -1,7 +1,4 @@
-// get profiles by indentifer, firstname/lastname, and violations//
-
-
-
+// Define GraphQL types and schema
 const typeDefs = `
 type User {
     id: ID!
@@ -25,8 +22,9 @@ type Profile {
     violations: [String]!
     databaseId: ID!
 }
+
 type Database {
-    id:ID!
+    id: ID!
     name: String!
     description: String!
     userId: String!
@@ -47,7 +45,12 @@ type Query {
     databases: [Database]
     database(id: ID!): Database
     databaseByUser(userId: String!): Database
-    }
+
+    // get profiles by identifier, firstname/lastname, and violations
+    profilesByIdentifier(identifier: String!): [Profile]
+    profilesByName(firstName: String, lastName: String): [Profile]
+    profilesByViolations(violations: [String]!): [Profile]
+}
 
 type Mutation {
     login(
@@ -119,4 +122,5 @@ type Mutation {
     deleteDatabase(id: ID!): Database
 }
 `
+
 module.exports = typeDefs;
