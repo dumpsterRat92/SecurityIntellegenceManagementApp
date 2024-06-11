@@ -1,3 +1,4 @@
+// Import necessary modules and components
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN, CREATE_USER } from "../utils/mutations";
@@ -5,28 +6,32 @@ import Auth from "../utils/auth";
 import backgroundImage from '../assets/b8079ebd75f8099cc56cc1ad074cb75b.jpg';
 
 export default function Login() {
+  // State to toggle between login and sign-up forms
   const [isLogin, setIsLogin] = useState(true);
+  // State to store form data
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  const [loginFunc, { error: loginError, data: loginData }] =
-    useMutation(LOGIN);
-  const [signup, { error: signupError, data: signupData }] =
-    useMutation(CREATE_USER);
 
+  // Define GraphQL mutations for login and sign-up
+  const [loginFunc, { error: loginError, data: loginData }] = useMutation(LOGIN);
+  const [signup, { error: signupError, data: signupData }] = useMutation(CREATE_USER);
+
+  // Handle input change and update form data state
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission for login or sign-up
   const handleSubmit = async (e) => {
-    if (isLogin) {
-      e.preventDefault();
-      console.log(formData);
-      try {
-        console.log(formData);
+    e.preventDefault();
+    console.log(formData);
+    try {
+      if (isLogin) {
+        // Perform login
         const { data } = await loginFunc({
           variables: {
             email: formData.email,
@@ -35,23 +40,19 @@ export default function Login() {
         });
         console.log(data);
         Auth.login(data.login.token);
-      } catch (e) {
-        console.error(e);
-      }
-    } else {
-      e.preventDefault();
-      try {
-        console.log(formData);
+      } else {
+        // Perform sign-up
         const { data } = await signup({
           variables: { ...formData },
         });
         console.log(data);
         Auth.login(data.createUser.token);
-      } catch (e) {
-        console.error(e);
       }
+    } catch (e) {
+      console.error(e);
     }
 
+    // Reset form data after submission
     setFormData({
       username: "",
       email: "",
@@ -59,6 +60,7 @@ export default function Login() {
     });
   };
 
+  // Define styles for the component
   const containerStyle = {
     display: "flex",
     flexDirection: "column",
@@ -111,6 +113,7 @@ export default function Login() {
     textDecoration: "underline",
   };
 
+  // Render the login/sign-up form
   return (
     <div style={containerStyle}>
       <form style={formStyle} onSubmit={handleSubmit}>

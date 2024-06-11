@@ -1,93 +1,102 @@
+/* Root styles */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Font family */
+  line-height: 1.5; /* Line height */
+  font-weight: 400; /* Font weight */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light dark; /* Support for light and dark modes */
+  color: rgba(255, 255, 255, 0.87); /* Text color */
+  background-color: #242424; /* Background color */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh; 
-  width: 100%; 
+  font-synthesis: none; /* Disable font synthesis */
+  text-rendering: optimizeLegibility; /* Optimize legibility */
+  -webkit-font-smoothing: antialiased; /* Smooth fonts in WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth fonts in Firefox on macOS */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center align items horizontally */
+  justify-content: center; /* Center align items vertically */
+  min-height: 100vh; /* Minimum height to cover the viewport */
+  width: 100%; /* Full width */
 }
 
+/* Anchor link styles */
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-weight: 500; /* Font weight */
+  color: #646cff; /* Link color */
+  text-decoration: inherit; /* Inherit text decoration */
 }
 a:hover {
-  color: #535bf2;
+  color: #535bf2; /* Link color on hover */
 }
 
+/* Body styles */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100%;
-  /* height: 100vh; */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Use flexbox layout */
+  place-items: center; /* Center align items */
+  width: 100%; /* Full width */
+  /* height: 100vh; */ /* Full viewport height (commented out) */
 }
 
+/* Heading styles */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2em; /* Font size */
+  line-height: 1.1; /* Line height */
 }
 
+/* Button styles */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid transparent; /* Transparent border */
+  padding: 0.6em 1.2em; /* Padding */
+  font-size: 1em; /* Font size */
+  font-weight: 500; /* Font weight */
+  font-family: inherit; /* Inherit font family */
+  background-color: #1a1a1a; /* Background color */
+  cursor: pointer; /* Pointer cursor */
+  transition: border-color 0.25s; /* Transition for border color */
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #646cff; /* Border color on hover */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color; /* Focus outline */
 }
 
+/* Media query for light color scheme */
 @media (prefers-color-scheme: light) {
+  /* Uncomment to customize styles for light color scheme */
   /* :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547; 
+    background-color: #ffffff; 
   }
   a:hover {
-    color: #747bff;
+    color: #747bff; 
   }
   button {
-    background-color: #f9f9f9;
-  }
-} */
+    background-color: #f9f9f9; 
+  } */
+}
 
+/* Media query for mobile devices */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack navigation links vertically */
+    align-items: center; /* Center align items */
   }
 
   .container-fluid {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack container children vertically */
+    align-items: flex-start; /* Align items to the start */
   }
 
   .navbar ul {
-    flex-direction: column;
+    flex-direction: column; /* Stack navbar links vertically */
   }
 
+  /* Uncomment to set side panel styles for mobile devices */
   /* .side-panel {
     width: 100%;
     position: static;
@@ -95,16 +104,16 @@ button:focus-visible {
   } */
 
   .main-content {
-    margin-left: 0;
-    padding: 1rem;
+    margin-left: 0; /* Remove left margin */
+    padding: 1rem; /* Padding for main content */
   }
 
   .card {
-    width: 100%;
+    width: 100%; /* Full width for cards */
   }
 }
 
-/* For larger devices */
+/* Media query for larger devices */
 @media (min-width: 769px) {
   .main-content {
     margin-left: 220px; /* Account for the side panel width */

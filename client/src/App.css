@@ -1,88 +1,79 @@
+/* Root container styles */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh; 
-  width: 100%; 
+  max-width: 1280px; /* Maximum width of the root container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 2rem; /* Padding inside the container */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center align items horizontally */
+  justify-content: center; /* Center align items vertically */
+  min-height: 100vh; /* Minimum height to cover the viewport */
+  width: 100%; /* Full width */
 }
 
+/* Logo styles */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  height: 6em; /* Set logo height */
+  padding: 1.5em; /* Padding around the logo */
+  will-change: filter; /* Optimize for filter property changes */
+  transition: filter 300ms; /* Smooth filter transition */
 }
 
+/* Hover effect for logo */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa); /* Drop shadow effect on hover */
+}
+
+/* Hover effect for React logo */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa); /* Drop shadow effect on hover */
+}
+
+/* Keyframes for spinning logo animation */
 @keyframes logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg); /* Start rotation */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* End rotation */
   }
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
-
-
-/* For mobile devices */
+/* Media query for mobile devices */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack navigation links vertically */
+    align-items: center; /* Center align items */
   }
 
   .container-fluid {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack container children vertically */
+    align-items: flex-start; /* Align items to the start */
   }
 
   .navbar ul {
-    flex-direction: column;
+    flex-direction: column; /* Stack navbar links vertically */
   }
 
   .side-panel {
-    width: 100%;
-    position: static;
-    margin-bottom: 1rem;
+    width: 100%; /* Full width for side panel */
+    position: static; /* Remove fixed positioning */
+    margin-bottom: 1rem; /* Margin below side panel */
   }
 
   .main-content {
-    margin-left: 0;
-    padding: 1rem;
+    margin-left: 0; /* Remove left margin */
+    padding: 1rem; /* Padding for main content */
   }
 
   .card {
-    width: 100%;
+    width: 100%; /* Full width for cards */
   }
 }
 
-/* For larger devices */
+/* Media query for larger devices */
 @media (min-width: 769px) {
   .main-content {
     margin-left: 220px; /* Account for the side panel width */
   }
 }
-

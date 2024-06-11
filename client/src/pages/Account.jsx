@@ -1,20 +1,23 @@
+// Import necessary modules and components
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function Account() {
+  // Define state for user data
   const [user, setUser] = useState(null);
 
+  // Fetch user data from backend on component mount
   useEffect(() => {
-    // Fetch user data from backend
     axios.get('/api/user')
       .then(response => {
-        setUser(response.data);
+        setUser(response.data); // Set user data to state
       })
       .catch(error => {
-        console.error('Error fetching user data:', error);
+        console.error('Error fetching user data:', error); // Log error if fetching fails
       });
   }, []);
 
+  // Define styles for the component
   const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
@@ -70,10 +73,12 @@ export default function Account() {
     color: '#333',
   };
 
+  // Display loading message while fetching user data
   if (!user) {
     return <div style={containerStyle}>Loading...</div>;
   }
 
+  // Render account page with user data
   return (
     <div style={containerStyle}>
       <div style={sectionStyle}>
