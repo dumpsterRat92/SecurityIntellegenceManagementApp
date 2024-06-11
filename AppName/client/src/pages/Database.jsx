@@ -1,8 +1,10 @@
+import backgroundImage from '../assets/ddc5r18-8c10d7aa-9796-432a-bf4a-9dbb6386f5ab.png';
 export default function Database() {
   const containerStyle = {
     display: 'flex',
     minHeight: '100vh',
     backgroundColor: '#fff',
+    backgroundImage: `url(${backgroundImage})`,
   };
 
   const sidePanelStyle = {

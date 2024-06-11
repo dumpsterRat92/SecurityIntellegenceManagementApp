@@ -1,3 +1,5 @@
+import backgroundImage from '../assets/SpongeBob-SquarePants-Mobile-Wallpaper.png';
+
 export default function FAQ() {
   const containerStyle = {
     display: 'flex',
@@ -5,6 +7,7 @@ export default function FAQ() {
     alignItems: 'center',
     padding: '5rem',
     backgroundColor: '#333',
+    backgroundImage: `url(${backgroundImage})`,
     color: '#FFF',
     // minHeight: '100vh',
     width: '100%',
