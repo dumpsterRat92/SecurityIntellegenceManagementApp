@@ -1,3 +1,4 @@
+import backgroundImage from '../assets/wp2234726-aesthetic-spongebob-wallpapers.png';
 // export default function Support() {
 //   return <div>Support stuff</div>;
 // }
@@ -36,6 +37,7 @@ export default function Support() {
     alignItems: 'center',
     padding: '6rem',
     backgroundColor: '#212121',
+    backgroundImage: `url(${backgroundImage})`,
     color: '#fff',
     minHeight: '100vh',
     width: '100%',

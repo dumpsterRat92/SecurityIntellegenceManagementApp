@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN, CREATE_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import backgroundImage from '../assets/b8079ebd75f8099cc56cc1ad074cb75b.jpg';
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -65,6 +66,7 @@ export default function Login() {
     justifyContent: "center",
     padding: "2rem",
     backgroundColor: "#000",
+    backgroundImage: `url(${backgroundImage})`,
     color: "#fff",
     minHeight: "100vh",
     width: "100%",
