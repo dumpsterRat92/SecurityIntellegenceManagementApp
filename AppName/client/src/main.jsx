@@ -15,6 +15,7 @@ import Account from "./pages/Account";
 import Profile from "./pages/Profile";
 import Support from "./pages/Support";
 import Database from "./pages/Database";
+import ProfileDetailed from "./components/Database/ProfileDetailed.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,14 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "profile/:id",
+        path: "profile",
         element: <Profile />,
+        children: [
+          {
+            path: ":profileId",
+            element: <ProfileDetailed />,
+          },
+        ],
       },
       {
         path: "support",

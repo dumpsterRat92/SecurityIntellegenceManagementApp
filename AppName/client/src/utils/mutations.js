@@ -42,23 +42,49 @@ export const CREATE_DATABASE = gql`
 
 
 export const CREATE_PROFILE = gql`
-    mutation createProfile($firstName: String!, $hostilityIndex: Int!, $identifiers: [String]!, $violations: [String]!, $databaseId: ID!, $height: String, $eyeColor: String, $hairColor: String, $gender: String, $race: String, $age: Int, $lastName: String) {
-        createProfile(firstName: $firstName, hostilityIndex: $hostilityIndex, identifiers: $identifiers, violations: $violations, databaseId: $databaseId, height: $height, eyeColor: $eyeColor, hairColor: $hairColor, gender: $gender, race: $race, age: $age, lastName: $lastName) {
-        age
-        databaseId
-        eyeColor
-        firstName
-        gender
-        hairColor
-        height
-        hostilityIndex
-        id
-        identifiers
-        lastName
-        race
-        violations
-        }
+  mutation createProfile(
+    $firstName: String!
+    $hostilityIndex: Int!
+    $identifiers: [String]!
+    $violations: [String]!
+    $databaseId: ID!
+    $height: String
+    $eyeColor: String
+    $hairColor: String
+    $gender: String
+    $race: String
+    $age: Int
+    $lastName: String
+  ) {
+    createProfile(
+      firstName: $firstName
+      hostilityIndex: $hostilityIndex
+      identifiers: $identifiers
+      violations: $violations
+      databaseId: $databaseId
+      height: $height
+      eyeColor: $eyeColor
+      hairColor: $hairColor
+      gender: $gender
+      race: $race
+      age: $age
+      lastName: $lastName
+    ) {
+      id
+      firstName
+      lastName
+      age
+      race
+      gender
+      hairColor
+      eyeColor
+      height
+      hostilityIndex
+      identifiers
+      violations
+      databaseId
     }
+  }
 `;
 
 export const DELETE_USER = gql`

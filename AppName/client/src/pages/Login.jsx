@@ -10,7 +10,8 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [login, { error: loginError, data: loginData }] = useMutation(LOGIN);
+  const [loginFunc, { error: loginError, data: loginData }] =
+    useMutation(LOGIN);
   const [signup, { error: signupError, data: signupData }] =
     useMutation(CREATE_USER);
 
@@ -25,7 +26,7 @@ export default function Login() {
       console.log(formData);
       try {
         console.log(formData);
-        const { data } = await login({
+        const { data } = await loginFunc({
           variables: {
             email: formData.email,
             password: formData.password,
@@ -39,11 +40,12 @@ export default function Login() {
     } else {
       e.preventDefault();
       try {
+        console.log(formData);
         const { data } = await signup({
           variables: { ...formData },
         });
         console.log(data);
-        Auth.login(data.signup.token);
+        Auth.login(data.createUser.token);
       } catch (e) {
         console.error(e);
       }

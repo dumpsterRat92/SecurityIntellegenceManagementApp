@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_DATABASEBYUSER } from "../../utils/queries";
 import Auth from "../../utils/auth";
@@ -19,7 +18,15 @@ const imgStyle = {
   height: "150px",
   backgroundColor: "#808080",
 };
-
+const mainContentStyle = {
+  flex: "1",
+  padding: "6rem 2rem 2rem 2rem",
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-around",
+  backgroundColor: "#212121",
+  boxSizing: "border-box",
+};
 export default function ProfileCard() {
   const { getProfile } = Auth;
   const user = getProfile();
@@ -49,7 +56,7 @@ export default function ProfileCard() {
   }
 
   return (
-    <div>
+    <div style={mainContentStyle}>
       {data ? (
         data.databaseByUser.profiles.map((profile) => (
           <div
@@ -58,18 +65,22 @@ export default function ProfileCard() {
             onMouseOver={handleHover}
             onMouseOut={handleMouseOut}
           >
-            <div style={imgStyle}></div>
-            <h3>
-              {profile.firstName} {profile.lastName}
-            </h3>
-            <p>
-              Identifiers:
-              {profile.identifiers.map((identifier) => "\n" + identifier + ",")}
-            </p>
-            <p>
-              Risk Level:{" "}
-              {["High", "Low", "Medium"][profile.hostilityIndex % 3]}
-            </p>
+            <Link to={`/profile/${profile.id}`}>
+              <div style={imgStyle}></div>
+              <h3>
+                {profile.firstName} {profile.lastName}
+              </h3>
+              <p>
+                Identifiers:
+                {profile.identifiers.map(
+                  (identifier) => "\n" + identifier + ","
+                )}
+              </p>
+              <p>
+                Risk Level:{" "}
+                {["High", "Low", "Medium"][profile.hostilityIndex % 3]}
+              </p>
+            </Link>
           </div>
         ))
       ) : (
