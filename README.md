@@ -29,10 +29,11 @@
 - Clean and maintainable codebase
 
 ## Screenshots
+![Screenshot 2024-06-10 231244](https://github.com/dumpsterRat92/SecurityIntellegenceManagementApp/assets/153157275/5c30f009-87e3-4074-a4d6-8e3c2e6fc0fc)
 
 ## Future Development
 
 ## Demo
 
-[Link to Deployed Application]()
+[Link to Deployed Application](https://sima-sentrywatch.onrender.com/)
 
